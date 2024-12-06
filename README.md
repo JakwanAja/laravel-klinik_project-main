@@ -13,5 +13,5 @@ Pada aplikasi ini kita akan membuat tambah, tampil, ubah dan hapus data pasien, 
 
 ## License
 
-FREE SOFTWARE, HELL YEAHH
+**Free Software, Hell Yeah!**
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
