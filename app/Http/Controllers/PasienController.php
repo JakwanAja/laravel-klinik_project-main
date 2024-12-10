@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pasien;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,6 @@ class PasienController extends Controller
             // Pencarian berdasarkan input dari request (parameter 'p')
             $data['pasien'] = \App\Models\Pasien::search(request('p'))->paginate(10);
         } else {
-            // Jika tidak ada pencarian, tampilkan data terbaru
             $data['pasien'] = \App\Models\Pasien::latest()->paginate(10);
         }
 
@@ -24,9 +24,6 @@ class PasienController extends Controller
         return view('pasien_index', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view(view: 'pasien_create');
@@ -57,9 +54,10 @@ class PasienController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $data['pasien'] = \App\Models\Pasien::findOrFail($id);
+        return view('pasien_show', $data);
     }
 
 

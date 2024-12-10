@@ -7,8 +7,7 @@
   <title>Go-klinik</title>
   <link rel="shortcut icon" type="image/png" href="/modern/src/assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="/modern/src/assets/css/styles.min.css" />
-  <!-- SweetAlert CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+  
 
 </head>
 
@@ -16,9 +15,9 @@
   
   <!--  Body Wrapper -->
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-    data-sidebar-position="fixed" data-header-position="fixed">
+    data-sidebar-position="fixed" data-header-position="fixed" style="background-color: #E4F4F3;">
     <!-- Sidebar Start -->
-    <aside class="left-sidebar">
+    <aside class="left-sidebar" style="background-color: #A1DBF1;">
       <!-- Sidebar scroll-->
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
@@ -50,6 +49,14 @@
                   <i class="ti ti-user"></i>
                 </span>
                 <span class="hide-menu">Data Pasien</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link {{ request()->is('poli') ? 'active' : '' }}" href="/gaenk" aria-expanded="false">
+                <span>
+                  <i class="ti ti-user"></i>
+                </span>
+                <span class="hide-menu">Data Poli</span>
               </a>
             </li>
             <li class="sidebar-item">
@@ -91,12 +98,6 @@
               </a>
             </li>
            
-          <div class="unlimited-access hide-menu bg-light-primary position-relative mb-7 mt-5 rounded">
-            <div class="d-flex">
-              <div class="unlimited-access-img">
-              </div>
-            </div>
-          </div>
         </nav>
         <!-- End Sidebar navigation -->
       </div>
@@ -106,7 +107,7 @@
     <!--  Main wrapper -->
     <div class="body-wrapper">
       <!--  Header Start -->
-      <header class="app-header">
+      <header class="app-header" style="background-color: #E4F4F3;">
         <nav class="navbar navbar-expand-lg navbar-light">
           <ul class="navbar-nav">
             <li class="nav-item d-block d-xl-none">
@@ -121,7 +122,7 @@
               </a>
             </li>
           </ul>
-          <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+          <div class="navbar-collapse justify-content-end px-0" id="navbarNav" >
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
               <a href="javascript:void(0)" target="_blank" class="sidebar-link">Hallo, admin</a>
               <li class="nav-item dropdown">

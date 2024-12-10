@@ -10,6 +10,7 @@
         <tr>
             <th width="1%">NO</th>
             <th>No Pasien</th>
+            <th>Foto Pasien</th>
             <th>Nama</th>
             <th>Umur</th>
             <th>Jenis Kelamin</th>
@@ -21,6 +22,7 @@
         <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $item->no_pasien }}</td>
+            <td>{{ $item->foto }} </td>
             <td>{{ $item->nama }}</td>
             <td>{{ $item->umur }}</td>
             <td>{{ $item->jenis_kelamin }}</td>
