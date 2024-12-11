@@ -54,10 +54,10 @@
             <div class="col-md-12">
                 <!-- Ganti 404 dengan gambar yang telah diatur ukurannya -->
                 <img src="{{ asset('modern/src/assets/images/backgrounds/searching1.png') }}" alt="Page Not Found" class="img-fluid">
-                <p>Waduh, tujuanmu nggak ada.</p>
-                <h6>Mungkin kamu salah  Jurusan, Ayo balik sebelum nyesel!</h6>
+                <p>Waduh, Tujuanmu nggak ada.</p>
+                <h6>Mungkin kamu salah  Jurusan, Ayo Drop out sebelum nyesel!</h6>
                 <!-- Button menggunakan Bootstrap -->
-                <a href="{{ url('/home') }}" class="btn btn-primary">Balik ke Home</a>
+                <a href="{{ url('/home') }}" class="btn btn-primary">Kembali</a>
             </div>
         </div>
     </div>

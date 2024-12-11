@@ -16,7 +16,7 @@ use App\Http\Controllers\LaporanDaftarController;
 
 // Redirect root to home
 Route::get('/', function () {
-    return redirect('/home');
+    return redirect('/dashboard');
 });
 
 // Routes requiring authentication
