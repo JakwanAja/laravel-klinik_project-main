@@ -69,6 +69,15 @@ new #[Layout('layouts.guest')] class extends Component
         </div>
     </form>
 
+    <!-- Login with -->
+    <div class='text-center mt-4'>
+        <p>Or login with</p>
+        <a href="{{ route('auth.google') }}">
+            <i class="bi bi-google" style="color:red;font-size:30px;margin:5px"></i>
+        </a>
+        <i class="bi bi-github" style="color:grey;font-size:30px;margin:5px"></i>
+    </div>
+
     <!-- Don't have an account? Sign up -->
     <div class="flex items-center justify-center mt-4">
         <p class="text-sm text-gray-600">

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\DaftarController;
@@ -52,6 +53,11 @@ Route::get('logout', function () {
     Auth::logout();
     return redirect('login');
 });
+
+// Login Google
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])
+    ->name('auth.google');
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
 // Include Laravel Breeze auth routes if applicable
 require __DIR__ . '/auth.php';
