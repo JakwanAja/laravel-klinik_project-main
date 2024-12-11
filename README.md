@@ -1,7 +1,4 @@
 # Laravel Klinik Project App
-Project ini dibuat untuk memenuhi tugas akhir mata kuliah pemrograman berbasis web 2. 
-Pada aplikasi ini kita akan membuat tambah, tampil, ubah dan hapus data pasien, data daftar dan data poli. Terdapat pula halaman login multi role yang dibuat dengan laravel breeze untuk create & register user. 
-
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -10,6 +7,10 @@ Pada aplikasi ini kita akan membuat tambah, tampil, ubah dan hapus data pasien, 
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
+
+Project ini dibuat untuk memenuhi tugas akhir mata kuliah pemrograman berbasis web 2. 
+Pada aplikasi ini kita akan membuat tambah, tampil, ubah dan hapus data pasien, data daftar dan data poli. Terdapat pula halaman login multi role yang dibuat dengan laravel breeze untuk create & register user. 
+
 
 ## License
 
