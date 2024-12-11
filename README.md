@@ -17,7 +17,10 @@ Pada aplikasi ini kita akan membuat fitur tambah, tampil, ubah, dan hapus data p
 - MySQL (bisa menggunakan XAMPP atau Laragon)
 - Composer
 - IDE (VS Code, Sublime Text)
-Project ini menggunakan Laravel versi 11. Pastikan PHP yang terinstal di perangkat adalah PHP versi 8.2 atau lebih baru. Jika kalian sebelumnya menggunakan PHP versi 8.1 atau lebih rendah, silakan update Composer dan PHP.
+PENTING!!: Project ini menggunakan Laravel versi 11. Pastikan PHP yang terinstal di perangkat adalah PHP versi 8.2 atau lebih baru. Jika kalian sebelumnya menggunakan PHP versi 8.1 atau lebih rendah, silakan update Composer dan PHP. Lakukan pengecekan versi PHP di terminal menggunakan perintah
+ ```bash
+   php -version
+   ```
 
 Login default : 
 - Email : myadmin1@gmail.com
