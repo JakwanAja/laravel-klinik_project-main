@@ -10,14 +10,14 @@
 </p>
 
 Project ini dibuat untuk memenuhi tugas akhir mata kuliah Pemrograman Berbasis Web 2. 
-Pada aplikasi ini kita akan membuat fitur tambah, tampil, ubah, dan hapus data pasien, data daftar, dan data poli. Terdapat pula halaman login multi-role yang dibuat dengan Laravel Breeze untuk create & register user.
+Projek ini memiliki fitur CRUD data pasien, data daftar, dan data poli, Laporan data Pasien & Pendaftaran, Serta beberapa fitur kecil. Terdapat pula halaman login multi-role yang dibuat dengan Laravel Breeze untuk create & register user.
 
 ## Requirement
 - PHP 8.2 atau lebih baru
 - MySQL (bisa menggunakan XAMPP atau Laragon)
 - Composer
 - IDE (VS Code, Sublime Text)
-PENTING!!: Project ini menggunakan Laravel versi 11. Pastikan PHP yang terinstal di perangkat adalah PHP versi 8.2 atau lebih baru. Jika kalian sebelumnya menggunakan PHP versi 8.1 atau lebih rendah, silakan update Composer dan PHP. Lakukan pengecekan versi PHP di terminal menggunakan perintah
+- PENTING!!: Project ini menggunakan Laravel versi 11. Pastikan PHP yang terinstal di perangkat adalah PHP versi 8.2 atau lebih baru. Jika kalian sebelumnya menggunakan PHP versi 8.1 atau lebih rendah, silakan update Composer dan PHP. Lakukan pengecekan versi PHP di terminal menggunakan perintah
  ```bash
    php -version
    ```
@@ -73,7 +73,7 @@ Login default :
      MAIL_MAILER=smtp
      MAIL_HOST=smtp.gmail.com
      MAIL_PORT=465
-     MAIL_USERNAME=your-emailkamu@gmail.com
+     MAIL_USERNAME=emailkamu@gmail.com
      MAIL_PASSWORD=your-email-password
      MAIL_ENCRYPTION=tls
      MAIL_FROM_ADDRESS="emailkamu9@gmail.com"
