@@ -13,7 +13,7 @@ Project ini dibuat untuk memenuhi tugas akhir mata kuliah Pemrograman Berbasis W
 Pada aplikasi ini kita akan membuat fitur tambah, tampil, ubah, dan hapus data pasien, data daftar, dan data poli. Terdapat pula halaman login multi-role yang dibuat dengan Laravel Breeze untuk create & register user.
 
 ## Requirement
-- PHP 8.2 atau diatasnya
+- PHP 8.2 atau lebih baru
 - MySQL (bisa menggunakan XAMPP atau Laragon)
 - Composer
 - IDE (VS Code, Sublime Text)
@@ -22,7 +22,7 @@ Project ini menggunakan Laravel versi 11. Pastikan PHP yang terinstal di perangk
 Login default : 
 - Email : myadmin1@gmail.com
 - Password : 12345678
-- 
+  
 ## How to Install
 
 1. Clone repository ini menggunakan terminal atau git bash:
@@ -64,17 +64,28 @@ Login default :
    ```bash
    php artisan db:seed
    ```
-10. Jalankan server :
-   ```bash
-   php artisan serve
-   ```
-   
+10. Konfigurasi SMTP untuk fitur verifikasi email:
+   - Edit file `.env` dengan informasi SMTP server:
+     ```env
+     MAIL_MAILER=smtp
+     MAIL_HOST=smtp.gmail.com
+     MAIL_PORT=465
+     MAIL_USERNAME=your-emailkamu@gmail.com
+     MAIL_PASSWORD=your-email-password
+     MAIL_ENCRYPTION=tls
+     MAIL_FROM_ADDRESS="emailkamu9@gmail.com"
+     MAIL_FROM_NAME="${APP_NAME}"
+     ```
+11. Jalankan server:
+    ```bash
+    php artisan serv
+    ```
 Website dapat diakses di `http://localhost:8000`.
 
 ## Features
 
 - Login, register multi-role dengan Laravel Breeze
-- Verifikasi Email menggunakan smtp
+- Verifikasi Email menggunakan SMTP
 - CRUD data pasien
 - CRUD data daftar
 - CRUD data poli
@@ -84,12 +95,14 @@ Website dapat diakses di `http://localhost:8000`.
 
 ## Alat dan Dependensi
 
-| Plugin | README |
+| Name | README |
 | ------ | ------ |
 | Laragon | [https://laragon.org/download/] |
 | Composer | [https://getcomposer.org/download/] |
 | Laravel | [https://laravel.com/docs/11.x/installation] |
-| Modernize |https://themewagon.com/themes/modernize/ |
+| Laravel Breeze | [https://laravel.com/docs/11.x/starter-kits#laravel-breeze] |
+| Modernize Template | [https://themewagon.com/themes/modernize/] |
+| Search bar | [https://github.com/nicolaslopezj/searchable] |
 
 ## Dokumentasi & Cara menggunakan
 
