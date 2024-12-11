@@ -13,12 +13,19 @@ Project ini dibuat untuk memenuhi tugas akhir mata kuliah Pemrograman Berbasis W
 Pada aplikasi ini kita akan membuat fitur tambah, tampil, ubah, dan hapus data pasien, data daftar, dan data poli. Terdapat pula halaman login multi-role yang dibuat dengan Laravel Breeze untuk create & register user.
 
 ## Requirement
-
+- PHP 8.2 atau diatasnya
+- MySQL (bisa menggunakan XAMPP atau Laragon)
+- Composer
+- IDE (VS Code, Sublime Text)
 Project ini menggunakan Laravel versi 11. Pastikan PHP yang terinstal di perangkat adalah PHP versi 8.2 atau lebih baru. Jika kalian sebelumnya menggunakan PHP versi 8.1 atau lebih rendah, silakan update Composer dan PHP.
 
+Login default : 
+- Email : myadmin1@gmail.com
+- Password : 12345678
+- 
 ## How to Install
 
-1. Clone repository ini:
+1. Clone repository ini menggunakan terminal atau git bash:
    ```bash
    git clone https://github.com/yourusername/laravel-klinik-project.git
    ```
@@ -30,7 +37,7 @@ Project ini menggunakan Laravel versi 11. Pastikan PHP yang terinstal di perangk
    ```bash
    composer install
    ```
-4. Install dependency frontend (jika ada):
+4. Install dependency frontend :
    ```bash
    npm install
    ```
@@ -38,45 +45,51 @@ Project ini menggunakan Laravel versi 11. Pastikan PHP yang terinstal di perangk
    ```bash
    cp .env.example .env
    ```
-   Konfigurasi database dan pengaturan lainnya di file `.env`.
+6. Buat database dengan nama 'klinik_db" atau lainnya. Konfigurasi database dan pengaturan lainnya di file `.env`.
+   lakukan pengecekan koneksi:
+   ```bash
+   php artisan db:monitor
+   ```
+   Jika muncul OK maka koneksi ke database berhasil, Jika error tanyakan Chatgpt
 
-6. Generate application key:
+7. Generate application key:
    ```bash
    php artisan key:generate
    ```
-7. Jalankan migrasi database:
+8. Jalankan migrasi database:
    ```bash
    php artisan migrate
    ```
-8. (Opsional) Jalankan seeder untuk mengisi data awal:
+9. (Opsional) Jalankan seeder untuk mengisi data awal:
    ```bash
    php artisan db:seed
    ```
-9. Jalankan server lokal:
+10. Jalankan server :
    ```bash
    php artisan serve
    ```
-
-Aplikasi dapat diakses di `http://localhost:8000`.
+   
+Website dapat diakses di `http://localhost:8000`.
 
 ## Features
 
+- Login, register multi-role dengan Laravel Breeze
+- Verifikasi Email menggunakan smtp
 - CRUD data pasien
 - CRUD data daftar
 - CRUD data poli
-- Login multi-role dengan Laravel Breeze
+- Laporan data Pasien & Pendaftaran 
 - Dashboard modern menggunakan template Modernize
 - Pencarian data menggunakan package [searchable](https://github.com/nicolaslopezj/searchable)
 
 ## Alat dan Dependensi
 
-- **Framework**: Laravel 11
-- **PHP**: Minimal versi 8.2
-- **Template**: Modernize
-- **Authentication**: Laravel Breeze
-- **Paket tambahan**: Nicolas Lopez Searchable
-
-## Alat dan Dependensi
+| Plugin | README |
+| ------ | ------ |
+| Laragon | [https://laragon.org/download/] |
+| Composer | [https://getcomposer.org/download/] |
+| Laravel | [https://laravel.com/docs/11.x/installation] |
+| Modernize |https://themewagon.com/themes/modernize/ |
 
 ## Dokumentasi & Cara menggunakan
 
