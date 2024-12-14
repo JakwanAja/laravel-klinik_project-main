@@ -4,25 +4,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Go-klinik</title>
+  <title>KlinikGo</title>
   <link rel="shortcut icon" type="image/png" href="/modern/src/assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="/modern/src/assets/css/styles.min.css" />
-  
-
 </head>
 
+
 <body>
-  
   <!--  Body Wrapper -->
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-    data-sidebar-position="fixed" data-header-position="fixed" style="background-color: #E4F4F3;">
+    data-sidebar-position="fixed" data-header-position="fixed" style="background-color: #FFFFFF;" >
     <!-- Sidebar Start -->
-    <aside class="left-sidebar" style="background-color: #A1DBF1;">
+    <aside class="left-sidebar" style="background-color: #0f6974;">
       <!-- Sidebar scroll-->
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
           <a href="/pasien" class="text-nowrap logo-img">
-            <img src="/modern/src/assets/images/logos/logo-2.png" width="180" alt="" />
+            <img src="/modern/src/assets/images/logos/logo.png" width="180" alt="" />
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
@@ -31,12 +29,12 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
           <ul id="sidebarnav">
-            <li class="nav-small-cap">
+            <li class="nav-small-cap" style="color: #F8D210;">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">Menu Utama</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link {{ request()->is('home') ? 'active' : '' }}" href="/home" aria-expanded="false">
+              <a class="sidebar-link {{ request()->is('home') ? 'active' : '' }} text-white "href="/home" aria-expanded="false">
                 <span>
                   <i class="ti ti-layout-dashboard"></i>
                 </span>
@@ -44,31 +42,34 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link {{ request()->is('pasien') ? 'active' : '' }}" href="/pasien" aria-expanded="false">
+              <a class="sidebar-link {{ request()->is('pasien') ? 'active' : '' }} text-white " href="/pasien" aria-expanded="false">
                 <span>
                   <i class="ti ti-user"></i>
                 </span>
                 <span class="hide-menu">Data Pasien</span>
               </a>
             </li>
+  
             <li class="sidebar-item">
-              <a class="sidebar-link {{ request()->is('poli') ? 'active' : '' }}" href="/gaenk" aria-expanded="false">
-                <span>
-                  <i class="ti ti-user"></i>
-                </span>
-                <span class="hide-menu">Data Poli</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link {{ request()->is('daftar') ? 'active' : '' }}" href="/daftar" aria-expanded="false">
+              <a class="sidebar-link {{ request()->is('daftar') ? 'active' : '' }}text-white " href="/daftar" aria-expanded="false">
                 <span>
                   <i class="ti ti-user"></i>
                 </span>
                 <span class="hide-menu">Pendaftaran Pasien</span>
               </a>
             </li>
+
             <li class="sidebar-item">
-              <a class="sidebar-link {{ request()->is('laporan-pasien') ? 'active' : '' }}" 
+              <a class="sidebar-link {{ request()->is('poli') ? 'active' : '' }}text-white " href="/gaenk" aria-expanded="false">
+                <span>
+                  <i class="ti ti-user"></i>
+                </span>
+                <span class="hide-menu">Data Poli</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link {{ request()->is('laporan-pasien') ? 'active' : '' }}text-white " 
                 href="/laporan-pasien/create" aria-expanded="false">
                 <span>
                   <i class="ti ti-file-description"></i>
@@ -76,8 +77,9 @@
                 <span class="hide-menu">Laporan Data Pasien</span>
               </a>
             </li>
+
             <li class="sidebar-item">
-              <a class="sidebar-link {{ request()->is('laporan-daftar') ? 'active' : '' }}" 
+              <a class="sidebar-link {{ request()->is('laporan-daftar') ? 'active' : '' }}text-white " 
                 href="/laporan-daftar/create" aria-expanded="false">
                 <span>
                   <i class="ti ti-file-description"></i>
@@ -85,18 +87,19 @@
                 <span class="hide-menu">Laporan Data Pendaftaran</span>
               </a>
             </li>
-            <li class="nav-small-cap">
+            
+            <li class="nav-small-cap" style="color: #F8D210;">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">AUTH</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="/logout" aria-expanded="false">
+              <a class="sidebar-link text-white" href="/logout" aria-expanded="false">
                 <span>
                   <i class="ti ti-login"></i>
                 </span>
                 <span class="hide-menu">Logout</span>
               </a>
-            </li>
+            </li>>
            
         </nav>
         <!-- End Sidebar navigation -->
@@ -107,48 +110,51 @@
     <!--  Main wrapper -->
     <div class="body-wrapper">
       <!--  Header Start -->
-      <header class="app-header" style="background-color: #E4F4F3;">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <ul class="navbar-nav">
-            <li class="nav-item d-block d-xl-none">
-              <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
-                <i class="ti ti-menu-2"></i>
+<!--  Header Start -->
+<header class="app-header" style="background-color: #FFFFFF;">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <ul class="navbar-nav">
+      <li class="nav-item d-block d-xl-none">
+        <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
+          <i class="ti ti-menu-2"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link nav-icon-hover" href="javascript:void(0)">
+          <i class="ti ti-bell-ringing"></i>
+          <div class="notification bg-primary rounded-circle"></div>
+        </a>
+      </li>
+    </ul>
+    <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+      <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+        @role('admin')
+          <a href="javascript:void(0)" target="_blank" class="sidebar-link">Hallo, admin</a>
+        @endrole
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <img src="/modern/src/assets/images/profile/user-3.jpg" alt="" width="35" height="35" class="rounded-circle">
+          </a>
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
+            <div class="message-body">
+              <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                <i class="ti ti-user fs-6"></i>
+                <p class="mb-0 fs-3">My Profile</p>
               </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link nav-icon-hover" href="javascript:void(0)">
-                <i class="ti ti-bell-ringing"></i>
-                <div class="notification bg-primary rounded-circle"></div>
+              <a href="https://www.instagram.com/jakwan.jpg/" class="d-flex align-items-center gap-2 dropdown-item">
+                <i class="ti ti-mail fs-6"></i>
+                <p class="mb-0 fs-3">My Account</p>
               </a>
-            </li>
-          </ul>
-          <div class="navbar-collapse justify-content-end px-0" id="navbarNav" >
-            <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-              <a href="javascript:void(0)" target="_blank" class="sidebar-link">Hallo, admin</a>
-              <li class="nav-item dropdown">
-                <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  <img src="/modern/src/assets/images/profile/user-3.jpg" alt="" width="35" height="35" class="rounded-circle">
-                </a>
-                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-                  <div class="message-body">
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-user fs-6"></i>
-                      <p class="mb-0 fs-3">My Profile</p>
-                    </a>
-                    <a href="https://www.instagram.com/jakwan.jpg/" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-mail fs-6"></i>
-                      <p class="mb-0 fs-3">My Account</p>
-                    </a>
-                    <a href="/logout" 
-                        class="btn btn-outline-danger mx-3 mt-2 d-block">Logout</a>
-                  </div>
-                </div>
-              </li>
-            </ul>
+              <a href="/logout" class="btn btn-outline-danger mx-3 mt-2 d-block">Logout</a>
+            </div>
           </div>
-        </nav>
-      </header>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
       <!--  Header End -->
       <div class="container-fluid">
         @include('flash::message')

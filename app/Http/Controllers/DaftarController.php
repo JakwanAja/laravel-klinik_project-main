@@ -9,9 +9,13 @@ use Illuminate\Http\Request;
 
 class DaftarController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+    public function __construct()
+    {
+        // Middleware hanya untuk role admin
+        $this->middleware('role:admin');
+    }
+
     public function index()
     {
         if (request()->filled('psn')) {

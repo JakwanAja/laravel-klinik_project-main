@@ -5,12 +5,28 @@ namespace App\Http\Controllers;
 use App\Models\Pasien;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use App\Models\User;
 
 class PasienController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function makeAdmin()
+    {
+        // Cari user dengan ID 1 dan 33
+        $users = User::find([33, 47]);
+        
+        // Cek apakah role admin sudah ada, jika belum buat
+        $role = Role::firstOrCreate(['name' => 'admin']);
+        
+        // Assign role admin ke setiap user
+        foreach ($users as $user) {
+            $user->assignRole($role);
+        }
+    
+        return "Sekarang anda adalah Admin.";
+    }
+    
+
     public function index()
     {
         if (request()->filled('p')) {
@@ -101,17 +117,29 @@ class PasienController extends Controller
         return redirect('/pasien');
     }
 
+    public function __construct()
+    {
+        $this->middleware('role:admin')->only('destroy');
+    }
+
     public function destroy(string $id)
     {
-        $pasien = \App\Models\Pasien::findOrFail($id);
+        $pasien = Pasien::findOrFail($id);
+
+        // Cek apakah ada data pendaftaran yang terkait dengan pasien
         if ($pasien->daftar->count() > 0) {
             flash('Data tidak bisa dihapus karena sudah ada data pendaftaran')->error();
             return back();
         }
+
+        // Hapus foto pasien jika ada
         if ($pasien->foto != null && Storage::exists($pasien->foto)) {
             Storage::delete($pasien->foto);
         }
+
+        // Hapus pasien dari database
         $pasien->delete();
+
         flash('Data sudah dihapus')->success();
         return back();
     }
