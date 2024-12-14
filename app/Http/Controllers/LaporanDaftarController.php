@@ -8,6 +8,12 @@ use App\Models\Daftar;
 
 class LaporanDaftarController extends Controller
 {
+    public function __construct()
+    {
+        // Middleware hanya untuk role admin
+        $this->middleware('role:admin');
+    }
+    
     public function create()
     {
         $data['listPoli'] = [
