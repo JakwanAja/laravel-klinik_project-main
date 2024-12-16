@@ -10,17 +10,16 @@ use App\Http\Controllers\LaporanPasienController;
 use App\Http\Controllers\LaporanDaftarController;
 use App\Http\Controllers\PoliController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 */
 
-// Redirect root to home
+// Redirect root to landing page
 Route::get('/', function () {
-    return redirect('/dashboard');
-});
+    return view('landingpage');
+})->name('landingpage');
 
 // Routes requiring authentication
 Route::middleware(['auth'])->group(function () {
@@ -51,17 +50,16 @@ Route::middleware(['auth'])->group(function () {
 // Authentication routes (login, register, logout, etc.)
 Auth::routes(['verify' => true]);
 
-//Make Admin
+// Make Admin
 Route::get('/make-admin', [PasienController::class, 'makeAdmin']);
 
-Route::middleware('role:admin')->get('/daftar', [DaftarController::class, 'index']);
+// Admin-only routes
 Route::middleware('role:admin')->group(function() {
+    Route::get('/daftar', [DaftarController::class, 'index']);
     Route::get('/laporan-daftar/create', [LaporanDaftarController::class, 'create'])->name('laporan-daftar.create');
     Route::get('/laporan-daftar', [LaporanDaftarController::class, 'index'])->name('laporan-daftar.index');
-});
-Route::middleware('role:admin')->group(function() {
-    Route::get('/laporan-pasien/create', [LaporanPasienController::class, 'create'])->name('laporan-daftar.create');
-    Route::get('/laporan-pasien', [LaporanPasienController::class, 'index'])->name('laporan-daftar.index');
+    Route::get('/laporan-pasien/create', [LaporanPasienController::class, 'create'])->name('laporan-pasien.create');
+    Route::get('/laporan-pasien', [LaporanPasienController::class, 'index'])->name('laporan-pasien.index');
 });
 
 // Custom logout route
@@ -70,10 +68,10 @@ Route::get('logout', function () {
     return redirect('login');
 });
 
-// Login Google
+// Login with Google
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])
     ->name('auth.google');
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
-
+// Include additional routes
 require __DIR__ . '/auth.php';

@@ -26,7 +26,6 @@ class PasienController extends Controller
         return "Sekarang anda adalah Admin.";
     }
     
-
     public function index()
     {
         if (request()->filled('p')) {
