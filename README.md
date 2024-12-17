@@ -22,10 +22,6 @@ Projek ini memiliki fitur CRUD data pasien, data daftar, dan data poli, Laporan 
    php -version
    ```
 
-Login default : 
-- Email : myadmin1@gmail.com
-- Password : 12345678
-  
 ## How to Install
 
 1. Clone repository ini menggunakan terminal atau git bash:
