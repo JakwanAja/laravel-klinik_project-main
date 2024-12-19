@@ -7,18 +7,20 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Models\User;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class PasienController extends Controller
 {
+    use SoftDeletes;
+
     public function makeAdmin()
     {
-        // Cari user dengan ID 1 dan 33
+        // Cari user dengan ID xx
         $users = User::find([33, 47]);
         
-        // Cek apakah role admin sudah ada, jika belum buat
         $role = Role::firstOrCreate(['name' => 'admin']);
         
-        // Assign role admin ke setiap user
         foreach ($users as $user) {
             $user->assignRole($role);
         }
@@ -28,14 +30,21 @@ class PasienController extends Controller
     
     public function index()
     {
+        //Api restFull
+        $pasien = \App\Models\Pasien::latest()->paginate(10);
+        if (request()->wantsJson()) {
+            return response()->json($pasien);
+        }
+        $data['pasien'] = $pasien;
+        return view('pasien_index' , $data);
+        // End Api restFull
+
         if (request()->filled('p')) {
             // Pencarian berdasarkan input dari request (parameter 'p')
             $data['pasien'] = \App\Models\Pasien::search(request('p'))->paginate(10);
         } else {
             $data['pasien'] = \App\Models\Pasien::latest()->paginate(10);
         }
-
-        // Kembalikan view dengan data pasien
         return view('pasien_index', $data);
     }
 
@@ -62,8 +71,12 @@ class PasienController extends Controller
         $pasien->foto = $path; // Simpan path relatif ke database    
         $pasien->save();
 
+        if ($request->wantsJson()) { 
+            return response()->json($pasien); 
+        }
+
         flash('Data sudah disimpan')->success(); 
-        return back(); // kembali ke halaman sebelumnya
+        return back(); 
     }
 
     /**
@@ -90,29 +103,40 @@ class PasienController extends Controller
             'umur' => 'required|numeric',
             'jenis_kelamin' => 'required|in:laki-laki,perempuan',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:5000',
-            'alamat' => 'nullable', // alamat boleh kosong
+            'alamat' => 'nullable', 
         ]);
     
-        // Mengambil pasien berdasarkan ID
+        // Temukan pasien berdasarkan ID atau gagal jika tidak ditemukan
         $pasien = \App\Models\Pasien::findOrFail($id);
     
-        // Mendefinisikan dan mengisi requestData, mengambil semua input kecuali foto
+        // Ambil data input kecuali foto
         $requestData = $request->except('foto');
-        
-        // Mengisi data pasien dengan requestData
         $pasien->fill($requestData);
     
         // Jika ada file foto yang diunggah
         if ($request->hasFile('foto')) {
-            // Hapus foto lama
-            Storage::delete($pasien->foto);
-            // Simpan foto baru dan perbarui kolom foto di database
-            $pasien->foto = $request->file('foto')->store('public');
+            // Hapus foto lama jika ada
+            if ($pasien->foto) {
+                Storage::delete($pasien->foto);
+            }
+    
+            // Simpan foto baru dan update kolom foto di database
+            $fotoPath = $request->file('foto')->store('images', 'public');
+            $pasien->foto = $fotoPath;
+        }
+        $pasien->save();
+    
+        // Kembalikan respons JSON jika diminta
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'data' => $pasien,
+                'message' => 'Data pasien berhasil diperbarui!'
+            ], 200);
         }
     
-        // Simpan perubahan pada model pasien
-        $pasien->save();
-        flash('Data sudah diupdate')->success();
+        // Jika bukan JSON, kembalikan redirect dengan flash message
+        flash('Data pasien berhasil diperbarui!')->success();
         return redirect('/pasien');
     }
 
@@ -124,22 +148,47 @@ class PasienController extends Controller
     public function destroy(string $id)
     {
         $pasien = Pasien::findOrFail($id);
-
-        // Cek apakah ada data pendaftaran yang terkait dengan pasien
-        if ($pasien->daftar->count() > 0) {
-            flash('Data tidak bisa dihapus karena sudah ada data pendaftaran')->error();
-            return back();
+    
+        // Cek jika pasien memiliki data pendaftaran
+        if ($pasien->daftar()->exists()) { // Menggunakan exists() untuk efisiensi query
+            return response()->json([
+                'success' => false,
+                'message' => 'Data tidak bisa dihapus karena sudah ada data pendaftaran'
+            ], 400); 
         }
-
-        // Hapus foto pasien jika ada
-        if ($pasien->foto != null && Storage::exists($pasien->foto)) {
+    
+        // Hapus file foto jika ada
+        if ($pasien->foto && Storage::exists($pasien->foto)) {
             Storage::delete($pasien->foto);
         }
-
-        // Hapus pasien dari database
         $pasien->delete();
-
         flash('Data sudah dihapus')->success();
-        return back();
+    
+        //return response()->json([
+           // 'success' => true,
+           // 'message' => 'Data pasien berhasil dihapus!'
+       // ], 200);
+
+       return back();
+    }
+    
+    public function restore($id)
+    {
+        // Ambil pasien meskipun sudah di-soft delete
+        $pasien = Pasien::withTrashed()->find($id);
+
+        // Jika data tidak ditemukan
+        if (!$pasien) {
+            return response()->json(['message' => 'Data tidak ditemukan'], 404);
+        }
+
+        // Restore data pasien yang telah di-soft delete
+        $pasien->restore();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Data pasien berhasil dipulihkan!',
+            'data' => $pasien
+        ], 200);
     }
 }
