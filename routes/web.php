@@ -9,6 +9,7 @@ use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\LaporanPasienController;
 use App\Http\Controllers\LaporanDaftarController;
 use App\Http\Controllers\PoliController;
+use App\Http\Controllers\TestEncryptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +73,10 @@ Route::get('logout', function () {
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])
     ->name('auth.google');
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
+// Route untuk testing enkripsi
+Route::get('/test-encryption', [TestEncryptionController::class, 'index'])->name('test.encryption');
+Route::post('/test-encryption', [TestEncryptionController::class, 'test'])->name('test.encryption.process');
 
 // Include additional routes
 require __DIR__ . '/auth.php';
