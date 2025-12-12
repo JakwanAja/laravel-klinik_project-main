@@ -19,8 +19,14 @@ return Application::configure(basePath: dirname(__DIR__))
 
             // Tambahkan alias untuk Sanctum
             'auth:sanctum' => \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+
+            // Tambahkan ini:
+            $middleware->web(append: [
+                \App\Http\Middleware\CheckSessionTimeout::class,
+            ])
         ]);
     })
+    
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();

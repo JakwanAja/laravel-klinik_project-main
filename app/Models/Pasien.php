@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
+use App\Casts\Encrypted;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Nicolaslopezj\Searchable\SearchableTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
 
 class Pasien extends Model
 {
@@ -26,7 +26,19 @@ class Pasien extends Model
             'daftars' => ['pasiens.id', 'daftars.pasien_id'],
         ],
     ];
-        protected $dates = ['deleted_at'];
+    
+    protected $dates = ['deleted_at'];
+
+    /**
+     * TAMBAHKAN INI: Enkripsi otomatis untuk alamat dan umur
+     */
+    protected function casts(): array
+    {
+        return [
+            'alamat' => Encrypted::class,
+            'umur' => Encrypted::class,
+        ];
+    }
 
     public function daftar(): HasMany
     {
